@@ -40,11 +40,11 @@ import java.util.Stack;
  *  如果此时栈为空, 该索引没有左侧结果, 可以令左侧结果为-1
  * */
 public class monotoneStack {
-    public int[][] getNearLessNoRepeat(int[] arr){
+    public static int[][] getNearLessNoRepeat(int[] arr){
         int[][] res = new int[arr.length][2];
         Stack<Integer> stack = new Stack<>();
         for(int i = 0;i < arr.length;i++){
-            while(!stack.isEmpty()&&arr[i]<stack.peek()){
+            while(!stack.isEmpty()&&arr[i]<arr[stack.peek()]){
                 int popIndex = stack.pop();
                 res[popIndex][0] = stack.isEmpty() ? -1 : stack.peek();
                 res[popIndex][1] = i;
@@ -57,6 +57,16 @@ public class monotoneStack {
             res[popIndex][1] = -1;
         }
         return res;
+    }
+    public static void main(String[] args){
+        int[] arr = {3,4,1,5,6,2,7};
+        int[][] res = getNearLessNoRepeat(arr);
+        for(int[] temp1:res){
+            for(int temp2:temp1){
+                System.out.print(temp2+",");
+            }
+            System.out.println(" ");
+        }
     }
 
 }
