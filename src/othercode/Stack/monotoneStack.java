@@ -1,4 +1,4 @@
-package othercode;
+package othercode.Stack;
 
 import java.util.Stack;
 
