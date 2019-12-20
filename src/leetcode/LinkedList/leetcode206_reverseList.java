@@ -16,7 +16,7 @@ public class leetcode206_reverseList {
         ListNode next = null;
         ListNode cur = head;
         while (cur != null) {
-            next = cur.next;
+            next = cur.next;//首先赋值next，因为到尾节点next会为null，不能出现next.next
             cur.next = pre;
             pre = cur;
             cur = next;
