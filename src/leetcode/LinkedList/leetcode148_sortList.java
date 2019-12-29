@@ -24,7 +24,7 @@ public class leetcode148_sortList {
         ListNode p = head, q = head, pre = null;
         //q为快指针，p保存中间节点或中间靠后节点，pre保存p的前一个节点
         while (q != null && q.next != null) {
-            pre = q;
+            pre = p;
             p = p.next;
             q = q.next.next;
         }
@@ -53,5 +53,18 @@ public class leetcode148_sortList {
         if (high != null)
             cur.next = high;
         return dummyHead.next;
+    }
+
+    public static void main(String[] args) {
+        leetcode148_sortList test = new leetcode148_sortList();
+        ListNode head = new ListNode(4);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(1);
+        head.next.next.next = new ListNode(3);
+        ListNode res = test.sortList(head);
+        while (res != null) {
+            System.out.print(res.val);
+            res = res.next;
+        }
     }
 }
