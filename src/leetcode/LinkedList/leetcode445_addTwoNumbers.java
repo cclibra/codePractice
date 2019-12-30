@@ -32,34 +32,15 @@ public class leetcode445_addTwoNumbers {
             stack2.push(l2.val);
             l2 = l2.next;
         }
-        int flag = 0;
-        while (!stack1.isEmpty() && !stack2.isEmpty()) {
-            int temp = stack1.pop() + stack2.pop() + flag;
-            if (temp > 9) {
-                temp = temp % 10;
-                flag = 1;
-            } else
-                flag = 0;
-            ListNode cur = new ListNode(temp);
+        int carry = 0;
+        while (!stack1.isEmpty() || !stack2.isEmpty() || carry != 0) {
+            int val1 = stack1.isEmpty() ? 0 : stack1.pop();
+            int val2 = stack2.isEmpty() ? 0 : stack2.pop();
+            carry += val1 + val2;
+            ListNode cur = new ListNode(carry % 10);
             cur.next = dummyHead;
             dummyHead = cur;
-        }
-        Stack<Integer> stack = stack1.isEmpty() ? stack2 : stack1;
-        while (!stack.isEmpty()) {
-            int temp = stack.pop() + flag;
-            if (temp > 9) {
-                temp = temp % 10;
-                flag = 1;
-            } else
-                flag = 0;
-            ListNode cur = new ListNode(temp);
-            cur.next = dummyHead;
-            dummyHead = cur;
-        }
-        if (flag != 0) {
-            ListNode cur = new ListNode(flag);
-            cur.next = dummyHead;
-            dummyHead = cur;
+            carry /= 10;
         }
         return dummyHead;
     }
