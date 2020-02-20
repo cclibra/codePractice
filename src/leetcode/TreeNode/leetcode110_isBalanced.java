@@ -30,4 +30,19 @@ public class leetcode110_isBalanced {
         if (Math.abs(leftHeight - rightHeight) > 1) res[0] = false;
         return Math.max(leftHeight, rightHeight);
     }
+
+    //简洁版，这里不维持布尔变量，仅在迭代中维持该子树的高度，一旦非平衡，则返回-1。
+    public Boolean isBalanced2(TreeNode head) {
+        return getHeight2(head) == -1;
+    }
+
+    private int getHeight2(TreeNode head) {
+        if (head == null) return 0;
+        int left = getHeight2(head.left);
+        if (left == -1) return -1;
+        int right = getHeight2(head.right);
+        if (right == -1) return -1;
+        if (Math.abs(left - right) > 1) return -1;
+        return Math.max(left, right) + 1;
+    }
 }
