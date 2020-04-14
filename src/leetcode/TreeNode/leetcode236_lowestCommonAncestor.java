@@ -19,7 +19,7 @@ package leetcode.TreeNode;
  * 有两种可能，要么node是o1或o2中的一个，要么node已经是o1和o2的最近公共祖先。
  * 不管是哪种情况，直接返回node即可。
  */
-public class leetccode236_lowestCommonAncestor {
+public class leetcode236_lowestCommonAncestor {
     private TreeNode lowestCommonAncestor(TreeNode head, TreeNode p, TreeNode q) {
         if (head == null || head == p || head == q)
             return head;
