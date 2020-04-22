@@ -24,8 +24,8 @@ import java.util.HashMap;
  * 然后继续对左右子树递归分析
  * 注意要确定左右子树的前序和中序数组的边界位置。
  */
-public class leetcode105_buildTree {
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
+public class leetcode105_buildTreeromPosIn {
+    public TreeNode buildTreeFromPosIn(int[] preorder, int[] inorder) {
         if (preorder == null || inorder == null)
             return null;
         HashMap<Integer, Integer> indexMap = new HashMap<>();
