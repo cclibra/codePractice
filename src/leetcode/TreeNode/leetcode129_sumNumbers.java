@@ -25,6 +25,7 @@ public class leetcode129_sumNumbers {
     }
 
     private void dfsSearchTree(TreeNode root, int cur) {
+        cur += root.val;
         if (root.left == null && root.right == null) sum += cur;
         if (root.left != null) dfsSearchTree(root.left, cur * 10);
         if (root.right != null) dfsSearchTree(root.right, cur * 10);
