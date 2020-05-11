@@ -31,6 +31,8 @@ public class leetcode124_maxPathSum {
         //这里可以看出max在叶子节点为负时可以被赋于负值，然后在与某个负值节点比较时也可能为负值
         max = Math.max(max, root.val + rightMax + leftMax);
         //注意，这里返回给上一级的是该节点为根的子树的最大和，一定要包括该根的值
+        //目的是返回上层包括该节点的路径中的最大值，因为每层更新max时，需要用到当前节点值与从左右子树返回的值
+        //要保证连通性，左右子树返回值必须包括左右节点的值
         return root.val + Math.max(leftMax, rightMax);
     }
 
