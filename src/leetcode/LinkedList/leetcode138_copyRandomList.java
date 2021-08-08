@@ -71,8 +71,7 @@ public class leetcode138_copyRandomList {
         //遍历，拆分成两个链表
         while (cur != null) {
             next = cur.next;
-            cur.next = cur.next.next;
-            next.next = cur.next != null ? cur.next.next : null;
+            cur.next = next == null ? null : next.next;
             cur = cur.next;
         }
         return res;
